@@ -65,7 +65,7 @@ knitr::opts_chunk$set(echo = TRUE, dev="CairoPNG", out.width = "100%")#, cache=T
 
 # IV. Cell Typing
 
-# V. Optional: Bacterial Load 
+# V. Advanced: Overlaying with Bacterial Load
 
 <!-- Miranda: -->
 <!-- describe the statistics and show some plots for Visium -->
