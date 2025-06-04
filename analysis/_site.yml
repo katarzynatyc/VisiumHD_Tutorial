@@ -1,7 +1,7 @@
-name: VisiumHD_Tutorial
+name: "VisiumHD_Tutorial"
 output_dir: ../docs
 navbar:
-  title: VisiumHD_Tutorial
+  title: "VisiumHD_Tutorial"
   left:
   - text: Home
     href: index.html

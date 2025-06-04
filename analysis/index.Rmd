@@ -55,10 +55,7 @@ knitr::opts_chunk$set(echo = TRUE, dev="CairoPNG", out.width = "100%")#, cache=T
 
 ## 2.1. Quality Control
 
-<!-- Miranda: describe the statistics and show some plots for Visium -->
-
 <!-- Francisco: describe the statistics and show some plots for Visium HD -->
-
 
 ## 2.2. Visualizing the sequencing depth and alignment results.
 
@@ -68,14 +65,19 @@ knitr::opts_chunk$set(echo = TRUE, dev="CairoPNG", out.width = "100%")#, cache=T
 
 # IV. Cell Typing
 
+# V. Optional: Bacterial Load 
 
-# V. Gene Expression Analysis in Spatial Context
+<!-- Miranda: -->
+<!-- describe the statistics and show some plots for Visium -->
+<!-- describe how bacterial spots are identified and visualized -->
+
+# VI. Gene Expression Analysis in Spatial Context
 
 
-# VI. Additional Tutorials 
+# VII. Additional Tutorials 
 
 
-# VII. References
+# VIII. References
 
 
 
