@@ -1,7 +1,7 @@
-name: "VisiumHD_Tutorial"
+name: VisiumHD_Tutorial
 output_dir: ../docs
 navbar:
-  title: "VisiumHD_Tutorial"
+  title: VisiumHD_Tutorial
   left:
   - text: Home
     href: index.html
@@ -9,6 +9,10 @@ navbar:
     href: about.html
   - text: License
     href: license.html
+  right:
+  - icon: fa-github
+    text: Source code
+    href: https://github.com/katarzynatyc/VisiumHD_Tutorial/    
 output:
   workflowr::wflow_html:
     toc: yes
