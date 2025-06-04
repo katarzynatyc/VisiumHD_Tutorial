@@ -7,4 +7,5 @@ editor_options:
   chunk_output_type: console
 ---
 
-Describe your project.
+This tutorial provides an introduction to the 10x Genomics Visium and Visium HD platforms, along with guidance on downstream analysis.
+Follow the steps outlined here to learn how to work with publicly available Visium HD datasets, perform basic preprocessing, and carry out foundational downstream analyses.
