@@ -1,11 +1,85 @@
 ---
-title: "Home"
+title: "Visium (HD) Analysis Tutorial"
+author: Miranda, Andrew, Francisco, Max, Katarzyna
 site: workflowr::wflow_site
 output:
   workflowr::wflow_html:
-    toc: false
+    toc: true
+    toc_float: true
+    #number_sections: false
+    df_print: paged
+    code_folding: show
 editor_options:
   chunk_output_type: console
 ---
 
-Welcome to my research website.
+*contact: tyck@vcu.edu*
+
+*File creation: June 04, 2025*  
+
+*Update: * 
+
+**Approximate time: 60 - 120 minutes**
+
+```{r setup, include=FALSE, dev="CairoPNG"}
+knitr::opts_chunk$set(echo = TRUE, dev="CairoPNG", out.width = "100%")#, cache=TRUE)
+```
+
+# I. Introduction
+
+## 1.1. Overview of Spatial Transcriptomics Data
+
+
+## 1.2. Objectives
+
+## 1.3. Requirements
+
+<!-- Andrew: discuss all the step for spaceranger installation on a local computer -->
+
+```{r, engine = 'bash', eval = FALSE}
+##== linux command ==##
+...add info here...
+```
+
+## 1.4. Data Downloading and Initial Processing
+
+<!-- Max: Discuss all the steps for Visium HD data download from 10x Genomics website -->
+<!-- check here: https://github.com/yezhengSTAT/CUTTag_tutorial/blob/master/analysis/index.Rmd -->
+
+```{r, engine = 'bash', eval = FALSE}
+##== linux command ==##
+...add info here...
+```
+
+# II. Data Pre-processing
+
+## 2.1. Quality Control
+
+<!-- Miranda: describe the statistics and show some plots for Visium -->
+
+<!-- Francisco: describe the statistics and show some plots for Visium HD -->
+
+
+## 2.2. Visualizing the sequencing depth and alignment results.
+
+
+# III. Dimensionality Reduction and Clustering
+
+
+# IV. Cell Typing
+
+
+# V. Gene Expression Analysis in Spatial Context
+
+
+# VI. Additional Tutorials 
+
+
+# VII. References
+
+
+
+
+
+
+
