@@ -536,15 +536,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomkatarzynatycVisiumHDTutorialtree96a3887ee481d01950424739a9d11bdc0be95eb6targetblank96a3887a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomkatarzynatycVisiumHDTutorialtreeb71a5b123f1873df9243771fc55f1f59d60196f6targetblankb71a5b1a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/katarzynatyc/VisiumHD_Tutorial/tree/96a3887ee481d01950424739a9d11bdc0be95eb6" target="_blank">96a3887</a>
+<a href="https://github.com/katarzynatyc/VisiumHD_Tutorial/tree/b71a5b123f1873df9243771fc55f1f59d60196f6" target="_blank">b71a5b1</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomkatarzynatycVisiumHDTutorialtree96a3887ee481d01950424739a9d11bdc0be95eb6targetblank96a3887a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomkatarzynatycVisiumHDTutorialtreeb71a5b123f1873df9243771fc55f1f59d60196f6targetblankb71a5b1a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -554,7 +554,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/katarzynatyc/VisiumHD_Tutorial/tree/96a3887ee481d01950424739a9d11bdc0be95eb6" target="_blank">96a3887</a>.
+<a href="https://github.com/katarzynatyc/VisiumHD_Tutorial/tree/b71a5b123f1873df9243771fc55f1f59d60196f6" target="_blank">b71a5b1</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -573,6 +573,9 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    analysis/.DS_Store
     Ignored:    data/.DS_Store
+
+Untracked files:
+    Untracked:  analysis/figures/
 
 Unstaged changes:
     Modified:   analysis/index.Rmd
@@ -620,6 +623,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/katarzynatyc/VisiumHD_Tutorial/blob/b71a5b123f1873df9243771fc55f1f59d60196f6/analysis/index.Rmd" target="_blank">b71a5b1</a>
+</td>
+<td>
+kmt555
+</td>
+<td>
+2025-06-07
+</td>
+<td>
+added info on loading and basic plotting
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/katarzynatyc/VisiumHD_Tutorial/b71a5b123f1873df9243771fc55f1f59d60196f6/docs/index.html" target="_blank">b71a5b1</a>
+</td>
+<td>
+kmt555
+</td>
+<td>
+2025-06-07
+</td>
+<td>
+added info on loading and basic plotting
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -781,41 +818,42 @@ class="section level2">
 </div>
 <div id="requiremnts" class="section level2">
 <h2>1.3. Requiremnts</h2>
-<p>If only molecule_info.h5 file exist, SpaceRanger Count will have to
-be run on this sample in order to extract infromation needed for loading
-to R or python.</p>
 <!-- Andrew: discuss all the step for spaceranger installation on a local computer 
 Update mouse info to a sample you are working with
 -->
 <pre class="bash"><code>##== linux command ==##
 ...add info here...</code></pre>
-<p>10x Visium HD data files were collected from 10x Genomics Resource
-page. The files we collect are:</p>
+</div>
+</div>
+<div id="ii.-data-pre-processing-with-spaceranger-count"
+class="section level1">
+<h1>II. Data Pre-processing with <code>spaceranger count</code></h1>
+<p>If only the <code>molecule_info.h5</code> file is available, you’ll
+need to run <code>spaceranger count</code> to generate the files
+required for loading Visium HD data into R or Python.</p>
+<p>In this example, Visium HD data files were downloaded from the 10x
+Genomics website. The following files are needed:</p>
 <pre><code>Visium_HD_Mouse_Brain_Fresh_Frozen_molecule_info.h5
 Visium_HD_Mouse_Brain_Fresh_Frozen_probe_set.csv
 Visium_HD_Mouse_Brain_Fresh_Frozen_spatial.tar.gz</code></pre>
+<p>Unpack the spatial image archive using:</p>
 <pre class="bash"><code>##== linux command ==##
 tar -xvzf Visium_HD_Mouse_Brain_Fresh_Frozen_spatial.tar.gz</code></pre>
-<p>This should contain a CytAssist file. We will need it to esxtract
-information for loading this data into R/Seurat pipeline.</p>
-</div>
-</div>
-<div id="ii.-data-pre-processing" class="section level1">
-<h1>II. Data Pre-processing</h1>
-<div id="spaceranger-count-optional" class="section level2">
-<h2>2.1 Spaceranger count (Optional)</h2>
-<p><code>spaceranger count</code> needs
-<code>--slide=&lt;slide_id&gt;</code> and
-<code>--area=&lt;capture_area&gt;</code>. Both variables should use the
-exact values provided by 10x Genomics for that specific Visium HD
-dataset. These are required to map spatial barcodes correctly and are
-usually provided in the associated metadata or sample sheet. In our
-case, the information we need was:</p>
+<p>This archive contains a CytAssist image file, which is required for
+reconstructing spatial coordinates and associating spots with the
+H&amp;E image.</p>
+<p>To run <code>spaceranger count</code>, you must provide the
+<code>--slide</code> and <code>--area</code> parameters using the exact
+values specified by 10x Genomics for this dataset. These are critical
+for mapping spatial barcodes correctly and are typically listed in the
+associated metadata or sample sheet.</p>
+<p>For this tutorial, the relevant information is:</p>
 <pre><code>Slide serial number: H1-7JN9RJG
 Area: A-1
 Instrument: Visium CytAssist
 Probe set: Visium Mouse Transcriptome Probe Set v2.0
 Sequencing</code></pre>
+<p>Run the following command:</p>
 <pre class="bash"><code>##== linux command ==##
 spaceranger count \
   --id=Visium_HD_Mouse_Brain_Fresh_Frozen \
@@ -825,19 +863,18 @@ spaceranger count \
   --image=./spatial/cytassist_image.tiff \
   --slide=H1-7JN9RJG \
   --area=A-1</code></pre>
+<p>⚠️ Make sure to adjust the file paths and reference transcriptome
+directory as needed for your setup.</p>
 </div>
-<div
-id="loading-and-visualizing-10x-visium-hd-binned-data-without-spaceranger-count"
-class="section level2">
-<h2>Loading and Visualizing 10x Visium HD Binned Data (Without
-SpaceRanger Count)</h2>
+<div id="iii.-loading-and-visualizing-10x-visium-hd-binned-data"
+class="section level1">
+<h1>III. Loading and Visualizing 10x Visium HD Binned Data</h1>
 <p>10x Genomics now provides binned spatial transcriptomics outputs that
 allow you to skip the spaceranger count step entirely. You can work
 directly with the binned data available for download from their
 website.</p>
 <p>✅ This tutorial demonstrates how to load the binned data in R using
 Seurat v5, and visualize gene expression using SpatialFeaturePlot().</p>
-</div>
 <div id="download-and-unpack-binned-data" class="section level2">
 <h2>2.1 Download and Unpack Binned Data</h2>
 <p>10x Genomics (<a href="https://www.10xgenomics.com/datasets/"
@@ -889,20 +926,16 @@ SpatialFeaturePlot(
   ggtitle(paste(&quot;Top expressed gene:&quot;, top_gene)) +
   scale_fill_gradient(low = &quot;white&quot;, high = &quot;purple4&quot;)
 </code></pre>
-<p><img src="../docs/figures/fig1_topgene.png"
+<p><img src="figures/fig1_topgene.png"
 alt="Figure 1. Visualization of Top Expressed Gene. Example visualization of a highly expressed gene across spatial bins, displayed using a single-color gradient ranging from white to a saturated hue. This approach highlights spatial expression patterns while maintaining sensitivity to low-abundance signals." />.</p>
 </div>
 <div id="quality-control" class="section level2">
-<h2>2.2. Quality Control</h2>
+<h2>2.3. Quality Control</h2>
 <!-- Francisco: describe the statistics and show some plots for Visium HD -->
 <pre class="bash"><code>SpatialFeaturePlot(seurat_obj, features = &quot;nCount_Spatial&quot;) +
   ggtitle(&quot;Total UMI counts per bin&quot;) +
   scale_fill_gradient(low = &quot;white&quot;, high = &quot;purple4&quot;)
   </code></pre>
-</div>
-<div id="visualizing-the-sequencing-depth-and-alignment-results."
-class="section level2">
-<h2>2.3. Visualizing the sequencing depth and alignment results.</h2>
 </div>
 </div>
 <div id="iii.-dimensionality-reduction-and-clustering"

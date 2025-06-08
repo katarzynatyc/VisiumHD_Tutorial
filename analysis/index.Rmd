@@ -38,8 +38,6 @@ knitr::opts_chunk$set(echo = TRUE, dev="CairoPNG", out.width = "100%")#, cache=T
 
 ## 1.3. Requiremnts 
 
-If only molecule_info.h5 file exist, SpaceRanger Count will have to be run on this sample in order to extract infromation needed for loading to R or python.
-
 <!-- Andrew: discuss all the step for spaceranger installation on a local computer 
 Update mouse info to a sample you are working with
 -->
@@ -51,7 +49,13 @@ Update mouse info to a sample you are working with
 ```
 
 
-10x Visium HD data files were collected from 10x Genomics Resource page. The files we collect are:
+
+
+# II. Data Pre-processing with `spaceranger count`
+
+If only the `molecule_info.h5` file is available, you'll need to run `spaceranger count` to generate the files required for loading Visium HD data into R or Python.
+
+In this example, Visium HD data files were downloaded from the 10x Genomics website. The following files are needed:
 
 ```
 Visium_HD_Mouse_Brain_Fresh_Frozen_molecule_info.h5
@@ -59,20 +63,18 @@ Visium_HD_Mouse_Brain_Fresh_Frozen_probe_set.csv
 Visium_HD_Mouse_Brain_Fresh_Frozen_spatial.tar.gz
 ```
 
+Unpack the spatial image archive using:
+
 ```{r, engine = 'bash', eval = FALSE}
 ##== linux command ==##
 tar -xvzf Visium_HD_Mouse_Brain_Fresh_Frozen_spatial.tar.gz
 ```
 
-This should contain a CytAssist file. We will need it to esxtract information for loading this data into R/Seurat pipeline.
+This archive contains a CytAssist image file, which is required for reconstructing spatial coordinates and associating spots with the H&E image.
 
+To run `spaceranger count`, you must provide the `--slide` and `--area` parameters using the exact values specified by 10x Genomics for this dataset. These are critical for mapping spatial barcodes correctly and are typically listed in the associated metadata or sample sheet.
 
-
-# II. Data Pre-processing
-
-## 2.1 Spaceranger count (Optional)
-
-`spaceranger count` needs `--slide=<slide_id>` and `--area=<capture_area>`. Both variables should use the exact values provided by 10x Genomics for that specific Visium HD dataset. These are required to map spatial barcodes correctly and are usually provided in the associated metadata or sample sheet. In our case, the information we need was:
+For this tutorial, the relevant information is:
 
 ```
 Slide serial number: H1-7JN9RJG
@@ -81,6 +83,8 @@ Instrument: Visium CytAssist
 Probe set: Visium Mouse Transcriptome Probe Set v2.0
 Sequencing
 ```
+
+Run the following command:
 
 ```{r, engine = 'bash', eval = FALSE}
 ##== linux command ==##
@@ -93,8 +97,9 @@ spaceranger count \
   --slide=H1-7JN9RJG \
   --area=A-1
 ```
+⚠️ Make sure to adjust the file paths and reference transcriptome directory as needed for your setup.
 
-##  Loading and Visualizing 10x Visium HD Binned Data (Without SpaceRanger Count)
+# III. Loading and Visualizing 10x Visium HD Binned Data
 
 10x Genomics now provides binned spatial transcriptomics outputs that allow you to skip the spaceranger count step entirely. You can work directly with the binned data available for download from their website.
 
@@ -153,11 +158,11 @@ SpatialFeaturePlot(
 ```
 
 
-![**Figure 1. Visualization of Top Expressed Gene.** Example visualization of a highly expressed gene across spatial bins, displayed using **a single-color gradient** ranging from white to a saturated hue. This approach highlights spatial expression patterns while maintaining sensitivity to low-abundance signals.](../docs/figures/fig1_topgene.png).
+![**Figure 1. Visualization of Top Expressed Gene.** Example visualization of a highly expressed gene across spatial bins, displayed using **a single-color gradient** ranging from white to a saturated hue. This approach highlights spatial expression patterns while maintaining sensitivity to low-abundance signals.](figures/fig1_topgene.png).
 
 
 
-## 2.2. Quality Control
+## 2.3. Quality Control
 
 <!-- Francisco: describe the statistics and show some plots for Visium HD -->
 
@@ -168,8 +173,6 @@ SpatialFeaturePlot(seurat_obj, features = "nCount_Spatial") +
   
 ```
 
-
-## 2.3. Visualizing the sequencing depth and alignment results.
 
 
 # III. Dimensionality Reduction and Clustering
