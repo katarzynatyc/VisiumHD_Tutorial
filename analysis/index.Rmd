@@ -27,41 +27,158 @@ knitr::opts_chunk$set(echo = TRUE, dev="CairoPNG", out.width = "100%")#, cache=T
 
 # I. Introduction
 
+<!-- Follow this as an example of what I want this to be: https://github.com/yezhengSTAT/CUTTag_tutorial/blob/master/analysis/index.Rmd -->
+
 ## 1.1. Overview of Spatial Transcriptomics Data
 
 
 ## 1.2. Objectives
 
-## 1.3. Requirements
+<!-- Max -->
 
-<!-- Andrew: discuss all the step for spaceranger installation on a local computer -->
+## 1.3. Requiremnts 
 
-```{r, engine = 'bash', eval = FALSE}
-##== linux command ==##
-...add info here...
-```
+If only molecule_info.h5 file exist, SpaceRanger Count will have to be run on this sample in order to extract infromation needed for loading to R or python.
 
-## 1.4. Data Downloading and Initial Processing
+<!-- Andrew: discuss all the step for spaceranger installation on a local computer 
+Update mouse info to a sample you are working with
+-->
 
-<!-- Max: Discuss all the steps for Visium HD data download from 10x Genomics website -->
-<!-- check here: https://github.com/yezhengSTAT/CUTTag_tutorial/blob/master/analysis/index.Rmd -->
 
 ```{r, engine = 'bash', eval = FALSE}
 ##== linux command ==##
 ...add info here...
 ```
+
+
+10x Visium HD data files were collected from 10x Genomics Resource page. The files we collect are:
+
+```
+Visium_HD_Mouse_Brain_Fresh_Frozen_molecule_info.h5
+Visium_HD_Mouse_Brain_Fresh_Frozen_probe_set.csv
+Visium_HD_Mouse_Brain_Fresh_Frozen_spatial.tar.gz
+```
+
+```{r, engine = 'bash', eval = FALSE}
+##== linux command ==##
+tar -xvzf Visium_HD_Mouse_Brain_Fresh_Frozen_spatial.tar.gz
+```
+
+This should contain a CytAssist file. We will need it to esxtract information for loading this data into R/Seurat pipeline.
+
+
 
 # II. Data Pre-processing
 
-## 2.1. Quality Control
+## 2.1 Spaceranger count (Optional)
+
+`spaceranger count` needs `--slide=<slide_id>` and `--area=<capture_area>`. Both variables should use the exact values provided by 10x Genomics for that specific Visium HD dataset. These are required to map spatial barcodes correctly and are usually provided in the associated metadata or sample sheet. In our case, the information we need was:
+
+```
+Slide serial number: H1-7JN9RJG
+Area: A-1
+Instrument: Visium CytAssist
+Probe set: Visium Mouse Transcriptome Probe Set v2.0
+Sequencing
+```
+
+```{r, engine = 'bash', eval = FALSE}
+##== linux command ==##
+spaceranger count \
+  --id=Visium_HD_Mouse_Brain_Fresh_Frozen \
+  --transcriptome=../refdata-gex-mm10-2020-A \
+  --probe-set=Visium_HD_Mouse_Brain_Fresh_Frozen_probe_set.csv \
+  --molecule-h5=Visium_HD_Mouse_Brain_Fresh_Frozen_molecule_info.h5 \
+  --image=./spatial/cytassist_image.tiff \
+  --slide=H1-7JN9RJG \
+  --area=A-1
+```
+
+##  Loading and Visualizing 10x Visium HD Binned Data (Without SpaceRanger Count)
+
+10x Genomics now provides binned spatial transcriptomics outputs that allow you to skip the spaceranger count step entirely. You can work directly with the binned data available for download from their website.
+
+✅ This tutorial demonstrates how to load the binned data in R using Seurat v5, and visualize gene expression using SpatialFeaturePlot().
+
+## 2.1 Download and Unpack Binned Data
+
+10x Genomics (https://www.10xgenomics.com/datasets/) provides preprocessed binned spatial transcriptomics outputs for Visium HD datasets. These files allow you to skip the spaceranger count step entirely.
+
+Once you've downloaded and extracted the dataset (e.g., for 8 µm bin resolution), the directory should look like this:
+
+```{r, engine = 'bash', eval = FALSE}
+binned_outputs/square_008um/
+├── filtered_feature_bc_matrix.h5
+├── spatial/
+│   ├── tissue_positions.parquet
+│   ├── scalefactors_json.json
+│   ├── tissue_lowres_image.png
+│   ├── aligned_fiducials.jpg
+│   ├── aligned_tissue_image.jpg
+│   ├── cytassist_image.tiff
+│   ├── detected_tissue_image.jpg
+│   └── tissue_hires_image.png
+
+```
+This directory contains everything needed to load the dataset into Seurat v5 for downstream analysis and visualization.
+
+## 2.2 Load and Normalize the Data in R
+
+```{r, engine = 'bash', eval = FALSE}
+library(Seurat)
+library(ggplot2)
+library(dplyr)
+
+# Load the Visium HD binned data
+seurat_obj <- Load10X_Spatial(data.dir = "./binned_outputs/square_008um/")
+
+# Normalize the data to create the 'data' slot used for plotting
+seurat_obj <- NormalizeData(seurat_obj)
+
+top_genes <- rowSums(seurat_obj@assays$Spatial@counts) %>%
+  sort(decreasing = TRUE) %>%
+  head(20)
+
+top_gene <- names(top_genes)[3]  # Change index to explore other genes
+
+SpatialFeaturePlot(
+  seurat_obj,
+  features = top_gene,
+  images = NULL,            # remove the H&E image
+  pt.size.factor = 2        # larger spots
+) +
+  ggtitle(paste("Top expressed gene:", top_gene)) +
+  scale_fill_gradient(low = "white", high = "purple4")
+
+```
+
+
+![**Figure 1. Visualization of Top Expressed Gene.** Example visualization of a highly expressed gene across spatial bins, displayed using **a single-color gradient** ranging from white to a saturated hue. This approach highlights spatial expression patterns while maintaining sensitivity to low-abundance signals.](../docs/figures/fig1_topgene.png).
+
+
+
+## 2.2. Quality Control
 
 <!-- Francisco: describe the statistics and show some plots for Visium HD -->
 
-## 2.2. Visualizing the sequencing depth and alignment results.
+```{r, engine = 'bash', eval = FALSE}
+SpatialFeaturePlot(seurat_obj, features = "nCount_Spatial") +
+  ggtitle("Total UMI counts per bin") +
+  scale_fill_gradient(low = "white", high = "purple4")
+  
+```
+
+
+## 2.3. Visualizing the sequencing depth and alignment results.
 
 
 # III. Dimensionality Reduction and Clustering
 
+
+```{r, engine = 'bash', eval = FALSE}
+seurat_obj <- FindVariableFeatures(seurat_obj, selection.method = "vst", nfeatures = 2000)
+head(VariableFeatures(seurat_obj), 20)
+```
 
 # IV. Cell Typing
 

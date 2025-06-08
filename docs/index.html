@@ -14,7 +14,7 @@
 
 <title>Visium (HD) Analysis Tutorial</title>
 
-<script src="site_libs/header-attrs-2.26/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.29/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -39,8 +39,8 @@
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
-<link href="site_libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
 
 <link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
@@ -402,7 +402,7 @@ aria-hidden="true"></span> </a>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2025-06-04
+<strong>Last updated:</strong> 2025-06-07
 </p>
 <p>
 <strong>Checks:</strong> <span
@@ -536,15 +536,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomkatarzynatycVisiumHDTutorialtree852fc368cde2b899909522371217239cceac9832targetblank852fc36a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomkatarzynatycVisiumHDTutorialtree96a3887ee481d01950424739a9d11bdc0be95eb6targetblank96a3887a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/katarzynatyc/VisiumHD_Tutorial/tree/852fc368cde2b899909522371217239cceac9832" target="_blank">852fc36</a>
+<a href="https://github.com/katarzynatyc/VisiumHD_Tutorial/tree/96a3887ee481d01950424739a9d11bdc0be95eb6" target="_blank">96a3887</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomkatarzynatycVisiumHDTutorialtree852fc368cde2b899909522371217239cceac9832targetblank852fc36a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomkatarzynatycVisiumHDTutorialtree96a3887ee481d01950424739a9d11bdc0be95eb6targetblank96a3887a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -554,7 +554,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/katarzynatyc/VisiumHD_Tutorial/tree/852fc368cde2b899909522371217239cceac9832" target="_blank">852fc36</a>.
+<a href="https://github.com/katarzynatyc/VisiumHD_Tutorial/tree/96a3887ee481d01950424739a9d11bdc0be95eb6" target="_blank">96a3887</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -569,10 +569,12 @@ were generated:
 </p>
 <pre><code>
 Ignored files:
+    Ignored:    .DS_Store
+    Ignored:    .Rhistory
     Ignored:    analysis/.DS_Store
+    Ignored:    data/.DS_Store
 
 Unstaged changes:
-    Modified:   analysis/_site.yml
     Modified:   analysis/index.Rmd
 
 </code></pre>
@@ -618,6 +620,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/katarzynatyc/VisiumHD_Tutorial/blob/96a3887ee481d01950424739a9d11bdc0be95eb6/analysis/index.Rmd" target="_blank">96a3887</a>
+</td>
+<td>
+kmt555
+</td>
+<td>
+2025-06-04
+</td>
+<td>
+sync
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/katarzynatyc/VisiumHD_Tutorial/96a3887ee481d01950424739a9d11bdc0be95eb6/docs/index.html" target="_blank">96a3887</a>
+</td>
+<td>
+kmt555
+</td>
+<td>
+2025-06-04
+</td>
+<td>
+sync
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -734,42 +770,146 @@ class="email">tyck@vcu.edu</a></em></p>
 <p><strong>Approximate time: 60 - 120 minutes</strong></p>
 <div id="i.-introduction" class="section level1">
 <h1>I. Introduction</h1>
+<!-- Follow this as an example of what I want this to be: https://github.com/yezhengSTAT/CUTTag_tutorial/blob/master/analysis/index.Rmd -->
 <div id="overview-of-spatial-transcriptomics-data"
 class="section level2">
 <h2>1.1. Overview of Spatial Transcriptomics Data</h2>
 </div>
 <div id="objectives" class="section level2">
 <h2>1.2. Objectives</h2>
+<!-- Max -->
 </div>
-<div id="requirements" class="section level2">
-<h2>1.3. Requirements</h2>
-<!-- Andrew: discuss all the step for spaceranger installation on a local computer -->
+<div id="requiremnts" class="section level2">
+<h2>1.3. Requiremnts</h2>
+<p>If only molecule_info.h5 file exist, SpaceRanger Count will have to
+be run on this sample in order to extract infromation needed for loading
+to R or python.</p>
+<!-- Andrew: discuss all the step for spaceranger installation on a local computer 
+Update mouse info to a sample you are working with
+-->
 <pre class="bash"><code>##== linux command ==##
 ...add info here...</code></pre>
-</div>
-<div id="data-downloading-and-initial-processing"
-class="section level2">
-<h2>1.4. Data Downloading and Initial Processing</h2>
-<!-- Max: Discuss all the steps for Visium HD data download from 10x Genomics website -->
-<!-- check here: https://github.com/yezhengSTAT/CUTTag_tutorial/blob/master/analysis/index.Rmd -->
+<p>10x Visium HD data files were collected from 10x Genomics Resource
+page. The files we collect are:</p>
+<pre><code>Visium_HD_Mouse_Brain_Fresh_Frozen_molecule_info.h5
+Visium_HD_Mouse_Brain_Fresh_Frozen_probe_set.csv
+Visium_HD_Mouse_Brain_Fresh_Frozen_spatial.tar.gz</code></pre>
 <pre class="bash"><code>##== linux command ==##
-...add info here...</code></pre>
+tar -xvzf Visium_HD_Mouse_Brain_Fresh_Frozen_spatial.tar.gz</code></pre>
+<p>This should contain a CytAssist file. We will need it to esxtract
+information for loading this data into R/Seurat pipeline.</p>
 </div>
 </div>
 <div id="ii.-data-pre-processing" class="section level1">
 <h1>II. Data Pre-processing</h1>
+<div id="spaceranger-count-optional" class="section level2">
+<h2>2.1 Spaceranger count (Optional)</h2>
+<p><code>spaceranger count</code> needs
+<code>--slide=&lt;slide_id&gt;</code> and
+<code>--area=&lt;capture_area&gt;</code>. Both variables should use the
+exact values provided by 10x Genomics for that specific Visium HD
+dataset. These are required to map spatial barcodes correctly and are
+usually provided in the associated metadata or sample sheet. In our
+case, the information we need was:</p>
+<pre><code>Slide serial number: H1-7JN9RJG
+Area: A-1
+Instrument: Visium CytAssist
+Probe set: Visium Mouse Transcriptome Probe Set v2.0
+Sequencing</code></pre>
+<pre class="bash"><code>##== linux command ==##
+spaceranger count \
+  --id=Visium_HD_Mouse_Brain_Fresh_Frozen \
+  --transcriptome=../refdata-gex-mm10-2020-A \
+  --probe-set=Visium_HD_Mouse_Brain_Fresh_Frozen_probe_set.csv \
+  --molecule-h5=Visium_HD_Mouse_Brain_Fresh_Frozen_molecule_info.h5 \
+  --image=./spatial/cytassist_image.tiff \
+  --slide=H1-7JN9RJG \
+  --area=A-1</code></pre>
+</div>
+<div
+id="loading-and-visualizing-10x-visium-hd-binned-data-without-spaceranger-count"
+class="section level2">
+<h2>Loading and Visualizing 10x Visium HD Binned Data (Without
+SpaceRanger Count)</h2>
+<p>10x Genomics now provides binned spatial transcriptomics outputs that
+allow you to skip the spaceranger count step entirely. You can work
+directly with the binned data available for download from their
+website.</p>
+<p>✅ This tutorial demonstrates how to load the binned data in R using
+Seurat v5, and visualize gene expression using SpatialFeaturePlot().</p>
+</div>
+<div id="download-and-unpack-binned-data" class="section level2">
+<h2>2.1 Download and Unpack Binned Data</h2>
+<p>10x Genomics (<a href="https://www.10xgenomics.com/datasets/"
+class="uri">https://www.10xgenomics.com/datasets/</a>) provides
+preprocessed binned spatial transcriptomics outputs for Visium HD
+datasets. These files allow you to skip the spaceranger count step
+entirely.</p>
+<p>Once you’ve downloaded and extracted the dataset (e.g., for 8 µm bin
+resolution), the directory should look like this:</p>
+<pre class="bash"><code>binned_outputs/square_008um/
+├── filtered_feature_bc_matrix.h5
+├── spatial/
+│   ├── tissue_positions.parquet
+│   ├── scalefactors_json.json
+│   ├── tissue_lowres_image.png
+│   ├── aligned_fiducials.jpg
+│   ├── aligned_tissue_image.jpg
+│   ├── cytassist_image.tiff
+│   ├── detected_tissue_image.jpg
+│   └── tissue_hires_image.png
+</code></pre>
+<p>This directory contains everything needed to load the dataset into
+Seurat v5 for downstream analysis and visualization.</p>
+</div>
+<div id="load-and-normalize-the-data-in-r" class="section level2">
+<h2>2.2 Load and Normalize the Data in R</h2>
+<pre class="bash"><code>library(Seurat)
+library(ggplot2)
+library(dplyr)
+
+# Load the Visium HD binned data
+seurat_obj &lt;- Load10X_Spatial(data.dir = &quot;./binned_outputs/square_008um/&quot;)
+
+# Normalize the data to create the &#39;data&#39; slot used for plotting
+seurat_obj &lt;- NormalizeData(seurat_obj)
+
+top_genes &lt;- rowSums(seurat_obj@assays$Spatial@counts) %&gt;%
+  sort(decreasing = TRUE) %&gt;%
+  head(20)
+
+top_gene &lt;- names(top_genes)[3]  # Change index to explore other genes
+
+SpatialFeaturePlot(
+  seurat_obj,
+  features = top_gene,
+  images = NULL,            # remove the H&amp;E image
+  pt.size.factor = 2        # larger spots
+) +
+  ggtitle(paste(&quot;Top expressed gene:&quot;, top_gene)) +
+  scale_fill_gradient(low = &quot;white&quot;, high = &quot;purple4&quot;)
+</code></pre>
+<p><img src="../docs/figures/fig1_topgene.png"
+alt="Figure 1. Visualization of Top Expressed Gene. Example visualization of a highly expressed gene across spatial bins, displayed using a single-color gradient ranging from white to a saturated hue. This approach highlights spatial expression patterns while maintaining sensitivity to low-abundance signals." />.</p>
+</div>
 <div id="quality-control" class="section level2">
-<h2>2.1. Quality Control</h2>
+<h2>2.2. Quality Control</h2>
 <!-- Francisco: describe the statistics and show some plots for Visium HD -->
+<pre class="bash"><code>SpatialFeaturePlot(seurat_obj, features = &quot;nCount_Spatial&quot;) +
+  ggtitle(&quot;Total UMI counts per bin&quot;) +
+  scale_fill_gradient(low = &quot;white&quot;, high = &quot;purple4&quot;)
+  </code></pre>
 </div>
 <div id="visualizing-the-sequencing-depth-and-alignment-results."
 class="section level2">
-<h2>2.2. Visualizing the sequencing depth and alignment results.</h2>
+<h2>2.3. Visualizing the sequencing depth and alignment results.</h2>
 </div>
 </div>
 <div id="iii.-dimensionality-reduction-and-clustering"
 class="section level1">
 <h1>III. Dimensionality Reduction and Clustering</h1>
+<pre class="bash"><code>seurat_obj &lt;- FindVariableFeatures(seurat_obj, selection.method = &quot;vst&quot;, nfeatures = 2000)
+head(VariableFeatures(seurat_obj), 20)</code></pre>
 </div>
 <div id="iv.-cell-typing" class="section level1">
 <h1>IV. Cell Typing</h1>
@@ -820,17 +960,17 @@ other attached packages:
 [1] workflowr_1.7.1
 
 loaded via a namespace (and not attached):
- [1] vctrs_0.6.5       httr_1.4.7        cli_3.6.2         knitr_1.46       
- [5] rlang_1.1.3       xfun_0.43         stringi_1.8.4     processx_3.8.4   
- [9] promises_1.3.0    jsonlite_1.8.8    glue_1.7.0        rprojroot_2.0.4  
-[13] git2r_0.36.2      htmltools_0.5.8.1 httpuv_1.6.15     ps_1.7.6         
-[17] sass_0.4.9        fansi_1.0.6       rmarkdown_2.26    jquerylib_0.1.4  
-[21] tibble_3.2.1      evaluate_0.23     fastmap_1.1.1     yaml_2.3.8       
-[25] lifecycle_1.0.4   whisker_0.4.1     stringr_1.5.1     compiler_4.4.0   
-[29] fs_1.6.4          pkgconfig_2.0.3   Rcpp_1.0.12       rstudioapi_0.16.0
-[33] later_1.3.2       digest_0.6.35     R6_2.5.1          utf8_1.2.4       
-[37] pillar_1.9.0      callr_3.7.6       magrittr_2.0.3    bslib_0.7.0      
-[41] tools_4.4.0       cachem_1.0.8      getPass_0.2-4    </code></pre>
+ [1] vctrs_0.6.5       httr_1.4.7        cli_3.6.5         knitr_1.50       
+ [5] rlang_1.1.6       xfun_0.52         stringi_1.8.7     processx_3.8.4   
+ [9] promises_1.3.3    jsonlite_2.0.0    glue_1.8.0        rprojroot_2.0.4  
+[13] git2r_0.36.2      htmltools_0.5.8.1 httpuv_1.6.16     ps_1.7.6         
+[17] sass_0.4.10       rmarkdown_2.29    jquerylib_0.1.4   tibble_3.2.1     
+[21] evaluate_1.0.3    fastmap_1.2.0     yaml_2.3.10       lifecycle_1.0.4  
+[25] whisker_0.4.1     stringr_1.5.1     compiler_4.4.0    fs_1.6.6         
+[29] pkgconfig_2.0.3   Rcpp_1.0.14       rstudioapi_0.16.0 later_1.4.2      
+[33] digest_0.6.37     R6_2.6.1          pillar_1.10.2     callr_3.7.6      
+[37] magrittr_2.0.3    bslib_0.9.0       tools_4.4.0       cachem_1.1.0     
+[41] getPass_0.2-4    </code></pre>
 </div>
 </div>
 
