@@ -146,7 +146,7 @@ seurat_obj <- Load10X_Spatial(data.dir = "./binned_outputs/square_008um/")
 # Normalize the data to create the 'data' slot used for plotting
 seurat_obj <- NormalizeData(seurat_obj)
 
-top_genes <- rowSums(seurat_obj@assays$Spatial@counts) %>%
+top_genes <- rowSums(seurat_obj@assays$Spatial$counts) %>%
   sort(decreasing = TRUE) %>%
   head(20)
 
