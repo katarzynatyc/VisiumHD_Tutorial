@@ -9,6 +9,7 @@ output:
     #number_sections: false
     df_print: paged
     code_folding: show
+    css: styles/custom.css
 editor_options:
   chunk_output_type: console
 ---
@@ -109,6 +110,11 @@ spaceranger count \
 
 10x Genomics (https://www.10xgenomics.com/datasets/) provides preprocessed binned spatial transcriptomics outputs for Visium HD datasets. These files allow you to skip the spaceranger count step entirely.
 
+```{r, echo=FALSE, out.width='100%', fig.cap="Download **Binned outputs (all bin levels)**"}
+knitr::include_graphics("figures/data_source.png")
+```
+
+
 Once you've downloaded and extracted the dataset (e.g., for 8 µm bin resolution), the directory should look like this:
 
 ```{r, engine = 'bash', eval = FALSE}
@@ -158,9 +164,12 @@ SpatialFeaturePlot(
 ```
 
 
-![**Figure 1. Visualization of Top Expressed Gene.** Example visualization of a highly expressed gene across spatial bins, displayed using **a single-color gradient** ranging from white to a saturated hue. This approach highlights spatial expression patterns while maintaining sensitivity to low-abundance signals.](figures/fig1_topgene.png).
+```{r, echo=FALSE, out.width='100%', fig.cap="**Figure 1. Visualization of Top Expressed Gene.** Example visualization of a highly expressed gene across spatial bins, displayed using **a single-color gradient** ranging from white to a saturated hue. This approach highlights spatial expression patterns while maintaining sensitivity to low-abundance signals."}
+knitr::include_graphics("figures/fig1_topgene.png")
+```
 
 
+<!--  [**Figure 1. Visualization of Top Expressed Gene.** Example visualization of a highly expressed gene across spatial bins, displayed using **a single-color gradient** ranging from white to a saturated hue. This approach highlights spatial expression patterns while maintaining sensitivity to low-abundance signals.](figures/fig1_topgene.png). -->
 
 ## 2.3. Quality Control
 
